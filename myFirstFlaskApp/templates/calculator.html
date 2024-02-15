@@ -1,0 +1,55 @@
+<!-- FILEPATH: /C:/Users/Yair Chaya/Desktop/CS120/calculator.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="static/css/cat.css" />
+
+    <script>
+        function calculate() {
+            // Get the values from the input fields
+            var num1 = parseInt(document.getElementById("num1").value);
+            var num2 = parseInt(document.getElementById("num2").value);
+
+            // Create a new form element
+            var form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/calculator";
+
+            // Create a new input element to hold the values of num1 and num2
+            var input1 = document.createElement("input");
+            input1.type = "hidden";
+            input1.name = "num1";
+            input1.value = num1;
+
+            var input2 = document.createElement("input");
+            input2.type = "hidden";
+            input2.name = "num2";
+            input2.value = num2;
+
+            // Append the input elements to the form
+            form.appendChild(input1);
+            form.appendChild(input2);
+
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" name="num1"><br><br>
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" name="num2"><br><br>
+    <button onclick="calculate()">Add</button>
+    <br><br>
+    <label for="result">Result:</label>
+    <input type="text" id="result" name="result" value="{{ result }}" readonly>
+    <br>
+    <a href="/" class="button">Back To Home</a>
+
+</body>
+</html>

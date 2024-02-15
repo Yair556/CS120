@@ -1,0 +1,24 @@
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #0b95d4;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #087aaf;
+    color: white;
+    text-decoration: none;
+}
+
+.dog-button {
+    background-color: #d40b0b;
+    }
+
+.dog-button:hover {
+    background-color: #a60a0a;
+}
+
