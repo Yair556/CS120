@@ -3,13 +3,12 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/<password>')
-def hello(password=""):
-    SuperDuperSecretPassCode = "mike"
-    return render_template('index.html', password=password, SuperSuperDuperSecretPassCode=SuperDuperSecretPassCode)
-
-# def hello_world():
-#     return render_template('index.html')
+# @app.route('/<password>')
+# def hello(password=""):
+#     SuperDuperSecretPassCode = "mike"
+#     return render_template('index.html', password=password, SuperSuperDuperSecretPassCode=SuperDuperSecretPassCode)
+def hello_world():
+    return render_template('index.html')
 
 @app.route('/dog')
 def dog():
