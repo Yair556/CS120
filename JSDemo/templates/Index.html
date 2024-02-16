@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask and JavaScript</title>
+    <style>
+        .milk {
+            scale: 0.25;
+        }
+
+        .container {
+            position: relative;
+            width: 50%;
+            height: 50%;
+            border: 1px solid #000;
+        }
+        #wrapper {
+        position: relative;
+        }
+        #ball {
+            position: absolute;
+            animation: animate 4s linear 0s infinite alternate;
+        }
+        @keyframes animate {
+            from { left: 100%; }
+            to { left: 0; }
+        }
+
+        </style>
+</head>
+<body>
+    <h1>Message from Flask:</h1>
+    <p id="message">Fetching...</p>
+
+    <h2>Click on the milk to make it bounce around</h2>
+    <div id="wrapper" class="container" style="position:relative; border:1px solid #000;">
+        <img id="ball" class="milk" src="https://www.goodnes.com/sites/g/files/jgfbjl321/files/styles/gdn_hero_pdp_product_image/public/gdn_product/field_product_images/nesquik-hohbqjdajf8qiyziuil2.png.webp?itok=80AwzfaY" alt="Chocolate Milk">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('message').textContent = data.message;
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+
+        // document.getElementById('milk').addEventListener('click', function() {
+        //     console.log('Clicked on the milk');
+        //     myMove();
+        // });
+
+        // function myMove() {
+            
+
+        //     var parent = document.getElementById('container'); // Element that holds the mover
+        //     var mover = document.getElementById('milk'); // The mover, can be anything
+        //     var dir = 1; // The direction we are moving... 1 is right, -1 is left.
+        //     var dist = 10; // The distance we move each "tick"
+
+        //     // The ID will let us stop it later if we want.
+        //     var intervalId = setInterval(function () {
+        //         // Get the left, remove the "px" from the end and convert it to an integer.
+        //         var posX = parseInt(mover.style.left.replace(/px$/, '')) || 0;
+
+        //         // Add dir * dist
+        //         posX += dir * dist;
+
+        //         // If we are moving right and we've gone over the right edge...
+        //         if (dir == 1 && posX + mover.offsetWidth > parent.offsetWidth) {
+        //             // only move right to the edge...
+        //             posX -= posX + mover.offsetWidth - parent.offsetWidth;
+        //             // and change direction.
+        //             dir *= -1
+        //             // If we are moving left and we've gone over the left edge...
+        //         } else if (dir == -1 && posX < 0) {
+        //             // stop at zero...
+        //             posX = 0;
+        //             // and change direction...
+        //             dir *= -1;
+        //         }
+
+        //         // Set the new position
+        //         mover.style.left = posX + "px";
+        //     }, 10); // this number is how many milliseconds in between each move.
+        //     // Smaller interval time means smoother movement but slower performance.
+        // }
+</script>
+</body>
+</html>
