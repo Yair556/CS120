@@ -1,4 +1,4 @@
-<!-- templates/index.html -->
+<!-- templates/index.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,22 @@
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
         <input type="submit" value="Submit">
+    </form>
+</body>
+</html> -->
+
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+</head>
+<body>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}
+        {{ form.recaptcha }}
+        {{ form.submit() }}
     </form>
 </body>
 </html>
